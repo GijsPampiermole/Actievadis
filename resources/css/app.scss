@@ -1,2 +1,18 @@
 // Imports
+<<<<<<< refs/remotes/origin/main
 @import "~bootstrap/scss/bootstrap";
+=======
+
+
+body {
+    background: white;
+}
+
+#container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+>>>>>>> Added Flexbox
