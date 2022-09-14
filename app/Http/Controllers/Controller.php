@@ -23,4 +23,8 @@ class Controller extends BaseController
                   );
         return view('fullcalendar',['Events' => $Events]);
     }
+
+    public function addActivity(){
+        return view('addActivity');
+    }
 }

@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 
 Route::get("/fullcalendar", "App\Http\Controllers\Controller@Chartjs");
+Route::get("/addActivity", "App\Http\Controllers\Controller@addActivity");

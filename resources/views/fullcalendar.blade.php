@@ -18,6 +18,7 @@
         center: 'title',
         right: 'month,basicWeek,basicDay'
       },
+      height: 500,
       navLinks: true, // can click day/week names to navigate views
       editable: true,
       eventLimit: true, // allow "more" link when too many events
@@ -31,7 +32,12 @@
 </head>
 <body>
 
-  <div id='calendar'></div>
+  <div id='calendar' style="width: 70%; margin: 0px auto;"></div>
+
+  <button id="btn">
+    <a href="/addActivity">Add activity</a>
+  </button>
+
 
 </body>
 </html>
