@@ -26,6 +26,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Accounts</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/inloggen">Inloggen</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
