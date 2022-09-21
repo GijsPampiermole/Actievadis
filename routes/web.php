@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get("/fullcalendar", "App\Http\Controllers\Controller@Chartjs");
-Route::get("/addActivity", "App\Http\Controllers\Controller@addActivity");
+Route::get("/fullcalendar", [Controller::class, 'Chartjs']);
+Route::get("/addActivities", [Controller::class, 'addActivities']);
+Route::post("/addActivity", [Controller::class, 'addActivity']);
