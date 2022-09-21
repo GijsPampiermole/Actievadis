@@ -1,14 +1,11 @@
 // Imports
-<<<<<<< refs/remotes/origin/main
 @import "~bootstrap/scss/bootstrap";
-=======
 
 
 body {
-    background: black;
+    background: white;
 }
 
-<<<<<<< refs/remotes/origin/main
 #container {
     display: flex;
     align-items: center;
@@ -16,11 +13,17 @@ body {
     flex-direction: column;
 }
 
->>>>>>> Added Flexbox
-=======
 .pp {
-    height: 5px;
-    width: 5px;
+    height: 50px;
+    width: 50px;
+}
+
+tr {
+    border: black 1px solid;
+}
+
+td {
+    border: black 1px solid;
 }
 
 //.container {
@@ -29,4 +32,3 @@ body {
 //    justify-content: center;
 //    flex-direction: column;
 //
->>>>>>> Backup Commit, as contingency when things go wrong
