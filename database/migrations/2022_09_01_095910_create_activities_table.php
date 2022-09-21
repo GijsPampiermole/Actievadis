@@ -20,12 +20,12 @@ return new class extends Migration
             $table->string('food');
             $table->string('image');
             $table->double('price');
-            $table->datetime('start-time');
-            $table->datetime('end-time');
+            $table->datetime('startTime');
+            $table->datetime('endTime');
             $table->text('description');
             $table->text('needs');
-            $table->integer('min-participants');
-            $table->integer('max-participants');
+            $table->integer('minParticipants');
+            $table->integer('maxParticipants');
             $table->timestamps();
         });
     }

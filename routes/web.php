@@ -19,6 +19,8 @@ use App\Http\Middleware\LoggedIn;
 Route::get('/', function () { return view('welcome'); })->middleware('auth');
 
 Route::get("/fullcalendar", "App\Http\Controllers\Controller@Chartjs")->middleware('auth');
+Route::get("/addActivities", [Controller::class, 'addActivities']);
+Route::post("/addActivity", [Controller::class, 'addActivity']);
 
 Route::get("/layout", function() { return view('layout'); })->middleware('auth');
 
