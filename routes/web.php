@@ -21,3 +21,5 @@ Route::get('/', function () {
 Route::get("/fullcalendar", [Controller::class, 'Chartjs']);
 Route::get("/addActivities", [Controller::class, 'addActivities']);
 Route::post("/addActivity", [Controller::class, 'addActivity']);
+
+Route::get("/layout", function() { return view('layout'); });
