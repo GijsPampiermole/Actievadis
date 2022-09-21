@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\LoggedIn;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () { return view('welcome'); })->middleware('auth');
 
-Route::get("/fullcalendar", "App\Http\Controllers\Controller@Chartjs");
+Route::get("/fullcalendar", "App\Http\Controllers\Controller@Chartjs")->middleware('auth');
+Route::get("/addActivities", [Controller::class, 'addActivities'])->middleware('auth');
+Route::post("/addActivity", [Controller::class, 'addActivity'])->middleware('auth');
 
-Route::get("/layout", function() { return view('layout'); });
+Route::get("/layout", function() { return view('layout'); })->middleware('auth');
+
+Route::get("/inloggen", [PageController::class, 'loginPage'])->name('login')->middleware(LoggedIn::class);
+
+Route::post("/inloggen/send", [AuthController::class, 'login']);
