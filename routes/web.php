@@ -20,11 +20,12 @@ use App\Http\Middleware\LoggedIn;
 Route::get('/', function () { return view('welcome'); })->middleware('auth');
 
 Route::get("/fullcalendar", "App\Http\Controllers\Controller@Chartjs")->middleware('auth');
-Route::get("/addActivities", [Controller::class, 'addActivities'])->middleware('auth');
 Route::post("/addActivity", [Controller::class, 'addActivity'])->middleware('auth');
 
 Route::get("/layout", function() { return view('layout'); })->middleware('auth');
 
+Route::get("/addActivities", [PageController::class, 'addActivities'])->middleware('auth');
+Route::get("/activities", [PageController::class, 'activities']);
 Route::get("/inloggen", [PageController::class, 'loginPage'])->name('login')->middleware(LoggedIn::class);
 
 Route::post("/inloggen/send", [AuthController::class, 'login']);

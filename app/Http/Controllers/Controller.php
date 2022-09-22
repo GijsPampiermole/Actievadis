@@ -26,10 +26,6 @@ class Controller extends BaseController
         return view('fullcalendar',['Events' => $Events]);
     }
 
-    public function addActivities(){
-        return view('addActivities');
-    }
-
     public function addActivity(Request $request){
         $name = $request->input('name');
         $location = $request->input('location');
