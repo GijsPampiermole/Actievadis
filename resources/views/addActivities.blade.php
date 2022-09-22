@@ -10,38 +10,41 @@
     <h1>Add</h1>
     <form action="/addActivity" method="POST">
         @csrf
-        <label for="name">name</label>
-        <input type="text" name="name" id="name">
+        <label for="name">name *</label>
+        <input type="text" name="name" id="name" maxlength="20" required>
         <br>
-        <label for="location">location</label>
-        <input type="text" name="location" id="location">
+        <label for="location">location *</label>
+        <input type="text" name="location" id="location" maxlength="20" required>
         <br>
-        <label for="food">food</label>
-        <input type="text" name="food" id="food">
+        <label for="food">food *</label>
+        <select name="food" id="food" required>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
         <br>
-        <label for="image">image</label>
-        <input type="text" name="image" id="image">
+        <label for="image">image *</label>
+        <input type="text" name="image" id="image" maxlength="50" required>
         <br>
-        <label for="price">price</label>
-        <input type="number" name="price" id="price">
+        <label for="price">price *</label>
+        <input type="number" name="price" id="price" min="1" max="10000" required>
         <br>
-        <label for="startTime">Start time</label>
-        <input type="datetime-local" name="startTime" id="startTime">
+        <label for="startTime">Start time *</label>
+        <input type="datetime-local" name="startTime" id="startTime" required>
         <br>
-        <label for="endTime">End time</label>
-        <input type="datetime-local" name="endTime" id="endTime">
+        <label for="endTime">End time *</label>
+        <input type="datetime-local" name="endTime" id="endTime" required>
         <br>
-        <label for="description">description</label>
-        <input type="text" name="description" id="description">
+        <label for="description">description *</label>
+        <input type="text" name="description" id="description" maxlength="500" required>
         <br>
-        <label for="needs">needs</label>
-        <input type="text" name="needs" id="needs">
+        <label for="needs">needs *</label>
+        <input type="text" name="needs" id="needs" maxlength="200" required>
         <br>
-        <label for="maxParticipants">max participants</label>
-        <input type="number" name="maxParticipants" id="maxParticipants">
+        <label for="maxParticipants">max participants *</label>
+        <input type="number" name="maxParticipants" id="maxParticipants" min="1" max="1000" required>
         <br>
-        <label for="minParticipants">min participants</label>
-        <input type="number" name="minParticipants" id="minParticipants">
+        <label for="minParticipants">min participants *</label>
+        <input type="number" name="minParticipants" id="minParticipants" min="1" max="1000" required> 
         <br>
         <button type="submit">Add</button>
     </form>
