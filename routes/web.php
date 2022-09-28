@@ -28,4 +28,6 @@ Route::get("/addActivities", [PageController::class, 'addActivities'])->middlewa
 Route::get("/activities", [PageController::class, 'activities']);
 Route::get("/inloggen", [PageController::class, 'loginPage'])->name('login')->middleware(LoggedIn::class);
 
+Route::get("/uitloggen", [AuthController::class, 'logout']);
+
 Route::post("/inloggen/send", [AuthController::class, 'login']);

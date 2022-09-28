@@ -19,4 +19,12 @@ class AuthController extends Controller
 
         return redirect('/inloggen')->with('error', 'Het opgegeven wachtwoord komt niet overeen met het emailadres');
     }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
+    }
 }
