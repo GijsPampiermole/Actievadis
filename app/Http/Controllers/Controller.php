@@ -12,19 +12,6 @@ use Illuminate\Http\Request;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    
-    public function Chartjs(){
-        $Events = array
-                  (
-                    "0" => array
-                              (
-                               "title" => "Dierentuin uitje",
-                               "start" => "2022-9-2 8:30:00",
-                               "end" => "2022-9-2 12:45:00",
-                               )
-                  );
-        return view('fullcalendar',['Events' => $Events]);
-    }
 
     public function addActivity(Request $request){
         $name = $request->input('name');
@@ -42,7 +29,6 @@ class Controller extends BaseController
         $data = array('name'=>$name, 'location'=>$location, 'food'=>$food, 'image'=>$image, 'price'=>$price, 'startTime'=>$startTime, 'endTime'=>$endTime, 'description'=>$description, 'needs'=>$needs, 'maxParticipants'=>$maxParticipants, 'minParticipants'=>$minParticipants);
         
         DB::table('activities')->insert($data);
-        echo "Record inserted successfully.<br/>";
-        echo '<a href = "/fullcalendar">Click Here</a> to go back.';
+        return redirect('/activities');
     }
 }

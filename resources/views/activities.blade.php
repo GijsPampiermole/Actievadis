@@ -15,4 +15,7 @@
             <p>{{ $activity->minParticipants }}</p>
         </div>
     @endforeach
+    <button id="btn">
+        <a href="/addActivities">Add activity</a>
+    </button>
 @endsection
