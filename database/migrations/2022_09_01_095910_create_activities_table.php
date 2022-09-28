@@ -17,15 +17,16 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('location');
-            $table->string('food');
+            $table->boolean('food');
             $table->string('image');
             $table->double('price');
             $table->datetime('startTime');
             $table->datetime('endTime');
-            $table->text('description');
-            $table->text('needs');
+            $table->string('description');
+            $table->string('needs');
             $table->integer('minParticipants');
             $table->integer('maxParticipants');
+            $table->string('signedUpUsers');
             $table->timestamps();
         });
     }
