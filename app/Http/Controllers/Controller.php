@@ -16,7 +16,7 @@ class Controller extends BaseController
     public function addActivity(Request $request){
         $name = $request->input('name');
         $location = $request->input('location');
-        $food = $request->input('food');
+        $food = $request->input('food') == 'yes' ? 1 : 0;
         $image = $request->input('image');
         $price = $request->input('price');
         $startTime = $request->input('startTime');
@@ -25,8 +25,10 @@ class Controller extends BaseController
         $needs = $request->input('needs');
         $maxParticipants = $request->input('maxParticipants');
         $minParticipants = $request->input('minParticipants');
+        
+        $signedUpUsers = "[{user: 1}{user: 2}]";
 
-        $data = array('name'=>$name, 'location'=>$location, 'food'=>$food, 'image'=>$image, 'price'=>$price, 'startTime'=>$startTime, 'endTime'=>$endTime, 'description'=>$description, 'needs'=>$needs, 'maxParticipants'=>$maxParticipants, 'minParticipants'=>$minParticipants);
+        $data = array('name'=>$name, 'location'=>$location, 'food'=>$food, 'image'=>$image, 'price'=>$price, 'startTime'=>$startTime, 'endTime'=>$endTime, 'description'=>$description, 'needs'=>$needs, 'maxParticipants'=>$maxParticipants, 'minParticipants'=>$minParticipants, 'signedUpUsers'=>$signedUpUsers);
         
         DB::table('activities')->insert($data);
         return redirect('/activities');
