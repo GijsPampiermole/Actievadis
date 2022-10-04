@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-    <p>Activities</p>
+    <p>Activiteiten</p>
 
     <div class="accordion">
         @foreach($activities as $activity)
@@ -38,7 +38,7 @@
 
                 <div class="box">
                     <div class="image"><img src="{{ $activity->image}}" alt="" class="padding-25">
-                        <div class="comments border">comments</div>
+                        <div class="comments border">Comments</div>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
 
     <a href="/addActivities">
         <button id="btn" class="btn btn-primary">
-            Add activity
+            Activiteit toevoegen
         </button>
     </a>
 
