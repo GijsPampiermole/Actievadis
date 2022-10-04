@@ -18,7 +18,7 @@ use App\Http\Middleware\LoggedIn;
 |
 */
 
-Route::get('/', function () { return view('welcome'); })->middleware('auth');
+Route::get('/', [PageController::class, 'activities'])->middleware('auth');;
 
 Route::get("/fullcalendar", "App\Http\Controllers\Controller@Chartjs")->middleware('auth');
 
@@ -28,16 +28,14 @@ Route::get("/layout", function() { return view('layout'); })->middleware('auth')
 
 Route::get("/addActivities", [PageController::class, 'addActivities'])->middleware('auth');
 
-Route::get("/activities", [PageController::class, 'activities']);
-
 Route::get("/inloggen", [PageController::class, 'loginPage'])->name('login')->middleware(LoggedIn::class);
 
 Route::get("/uitloggen", [AuthController::class, 'logout']);
 
 Route::post("/inloggen/send", [AuthController::class, 'login']);
 
-Route::post("/admin/users/create", [UserController::class, 'create']);
+Route::post("/admin/users/create", [UserController::class, 'create'])->middleware('auth');
 
-Route::post("/admin/users/update", [UserController::class, 'update']);
+Route::post("/admin/users/update", [UserController::class, 'update'])->middleware('auth');
 
-Route::post("/admin/users/delete", [UserController::class, 'delete']);
+Route::post("/admin/users/delete", [UserController::class, 'delete'])->middleware('auth');
