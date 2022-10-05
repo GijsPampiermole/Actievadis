@@ -26,7 +26,6 @@ return new class extends Migration
             $table->string('needs');
             $table->integer('minParticipants');
             $table->integer('maxParticipants');
-            $table->string('signedUpUsers');
             $table->timestamps();
         });
     }
