@@ -2,6 +2,11 @@
 @section('content')
     <p>Activiteiten</p>
 
+    @if (session('success'))
+        <p class="text-success mb-0">
+            {{ session('success') }}
+        </p>
+    @endif
     <div class="accordion">
         @foreach($activities as $activity)
             <div class="header" id="accordion-header">
@@ -19,19 +24,79 @@
             <div class="content" id="accordion-content" style="max-height: 0px;">
 
                 <div class="box">
-                    <div class="description">{{ $activity->description }}</div>
-                    <div class="needs">{{ $activity->needs }}</div>
-                    <div class="food padding-25">{{ $activity->food }}</div>
-
-                    <div class="location">{{ $activity->location }}</div>
-                    <div class="time padding-25">Van {{ $activity->startTime }} tot {{ $activity->endTime }}</div>
-
-                    <div class="participants">{{ $activity->minParticipants }} - {{ $activity->maxParticipants }}
-                        Deelnemers
+                    <div class="description mt-2">
+                        <h6 class="fw-bold">
+                            Beschrijving:
+                        </h6>
+                        {{ $activity->description }}
                     </div>
-                    <div class="current-participants padding-25">6 Ingeschreven deelnemers</div>
+                    <div class="needs mt-2">
+                        <h6 class="fw-bold">
+                            Benodigdheden:
+                        </h6>
+                        {{ $activity->needs }}
+                    </div>
+                    <div class="food padding-25 mt-2">
+                        <h6 class="fw-bold">
+                            Is er eten?
+                        </h6>
+                        {{ $activity->food ? 'Ja' : 'Nee' }}
+                    </div>
 
-                    <div class="price">{{ $activity->price }}</div>
+                    <div class="location mt-2">
+                        <h6 class="fw-bold">
+                            Locatie:
+                        </h6>
+                        {{ $activity->location }}
+                    </div>
+                    <div class="time padding-25 mt-2">
+                        <h6 class="fw-bold">
+                            Datum en tijd:
+                        </h6>
+                        Van {{ $activity->startTime }} tot {{ $activity->endTime }}
+                    </div>
+
+                    <div class="participants mt-2">
+                        <h6 class="fw-bold">
+                            Minimaal deelnemers:
+                        </h6>
+                        {{ $activity->minParticipants }}
+                        <h6 class="fw-bold">
+                            Maximaal deelnemers:
+                        </h6>
+                        {{ $activity->maxParticipants }}
+                    </div>
+                    <div class="current-participants padding-25 mt-2">
+                        <h6 class="fw-bold">
+                            Tot nu toe zijn er:
+                        </h6>
+
+                        {{ count(App\Models\ActivitiesRelationship::where('activityId', $activity->id)->get()) }} Ingeschreven deelnemer(s)
+                    </div>
+
+                    <div class="price">
+                        <h6 class="fw-bold">
+                            Prijs:
+                        </h6>
+                        €{{ $activity->price }}
+                    </div>
+                    @if(!$userSignings->isEmpty())
+                        @foreach($userSignings as $signing)
+                            @if($activity->id === $signing->activityId)
+                                <form action="/uitschrijven/send" method="POST">
+                                    @csrf
+                                    <input type="hidden" value="{{ $activity->id }}" name="id" />
+                                    <input type="submit" class="btn btn-primary" value="Uitschrijven">
+                                </form>
+                            @endif
+                        @endforeach
+                    @else
+                        <form action="/inschrijven/send" method="POST">
+                            @csrf
+                            <input type="hidden" value="{{ $activity->id }}" name="id" />
+                            <input type="submit" class="btn btn-primary" value="Inschrijven">
+                        </form>
+                    @endif
                 </div>
 
                 <div class="spacer"></div>
@@ -57,11 +122,11 @@
                 let dropdown = e.target.parentElement.children[1];
                 if (dropdown.style.maxHeight == "0px") {
                     dropdown.style.maxHeight = dropdown.scrollHeight + 'px';
-                    dropdown.style.padding = "20px";
+                    dropdown.style.margin = "20px";
                     e.target.classList.add("headerActive");
                 } else {
                     dropdown.style.maxHeight = 0;
-                    dropdown.style.padding = "0 20px";
+                    dropdown.style.margin = "0 20px";
                     e.target.classList.remove("headerActive");
                 }
             });

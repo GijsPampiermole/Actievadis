@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
@@ -39,3 +40,7 @@ Route::post("/admin/users/create", [UserController::class, 'create'])->middlewar
 Route::post("/admin/users/update", [UserController::class, 'update'])->middleware('auth');
 
 Route::post("/admin/users/delete", [UserController::class, 'delete'])->middleware('auth');
+
+Route::post("/inschrijven/send", [ActivityController::class, 'signUp'])->middleware('auth');
+
+Route::post("/uitschrijven/send", [ActivityController::class, 'unSubscribe'])->middleware('auth');

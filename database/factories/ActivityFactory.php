@@ -28,8 +28,7 @@ class ActivityFactory extends Factory
             'description' => 'bla bla bla',
             'needs' => 'bla bla bla',
             'minParticipants' => fake()->randomNumber(),
-            'maxParticipants' => fake()->randomNumber(),
-            'signedUpUsers' => '[{user: 1}{user: 2}]'
+            'maxParticipants' => fake()->randomNumber()
         ];
     }
 }
