@@ -71,7 +71,8 @@
                             Tot nu toe zijn er:
                         </h6>
 
-                        {{ count(App\Models\ActivitiesRelationship::where('activityId', $activity->id)->get()) }} Ingeschreven deelnemer(s)
+                        {{ count(App\Models\ActivitiesRelationship::where('activityId', $activity->id)->get()) }}
+                        Ingeschreven deelnemer(s)
                     </div>
 
                     <div class="price">
@@ -85,7 +86,7 @@
                             @if($activity->id === $signing->activityId)
                                 <form action="/uitschrijven/send" method="POST">
                                     @csrf
-                                    <input type="hidden" value="{{ $activity->id }}" name="id" />
+                                    <input type="hidden" value="{{ $activity->id }}" name="id"/>
                                     <input type="submit" class="btn btn-primary" value="Uitschrijven">
                                 </form>
                             @endif
@@ -93,7 +94,7 @@
                     @else
                         <form action="/inschrijven/send" method="POST">
                             @csrf
-                            <input type="hidden" value="{{ $activity->id }}" name="id" />
+                            <input type="hidden" value="{{ $activity->id }}" name="id"/>
                             <input type="submit" class="btn btn-primary" value="Inschrijven">
                         </form>
                     @endif
@@ -102,416 +103,34 @@
                 <div class="spacer"></div>
 
                 <div class="box">
-                    <div class="image"><img src="{{ $activity->image}}" alt="" class="padding-25">
+                    <div class="image">
+                        <img src="{{ $activity->image}}" alt="" class="padding-25"/>
                         <div class="border comments">
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            CommentsComments
-                            Comments
-                            CommentsComments
-                            Comments
-                            Comments
-                            Comments
-                            Comments
+                            @foreach(\App\Models\Comment::where('activityId', $activity->id)->get() as $comment)
+                                <div class="mb-3">
+                                    @foreach(\App\Models\User::where('id', $comment->userId)->get() as $user)
+                                        <div class="d-flex justify-content-between align-items-end">
+                                            <p class="fw-bold mb-0">
+                                                {{ $user->name }}
+                                            </p>
+                                            <p class="mb-0">
+                                                {{ $comment->created_at }}
+                                            </p>
+                                        </div>
+                                    @endforeach
+                                    <div class="border">
+                                        <p class="mb-0">
+                                            {{ $comment->message }}
+                                        </p>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                         <form method="POST" action="/comments/send" class="d-flex">
                             @csrf
-                            <input type="hidden" value="{{ $activity->id }}" name="id" />
-                            <textarea name="reactie" placeholder="Typ hier iets..." class="border mt-4 h-auto me-4"></textarea>
+                            <input type="hidden" value="{{ $activity->id }}" name="id"/>
+                            <textarea name="reactie" placeholder="Typ hier iets..."
+                                      class="border mt-4 h-auto me-4"></textarea>
                             <input type="submit" value="Reageren" class="border mt-4 btn btn-primary w-25">
                         </form>
                     </div>
