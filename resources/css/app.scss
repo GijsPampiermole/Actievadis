@@ -80,3 +80,8 @@ body {
 .padding-25 {
     padding-bottom: 25px
 }
+
+.comments {
+    max-height: 420px;
+    overflow-y: scroll;
+}
