@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-    <p>Activiteiten</p>
+    <h1>Mijn activiteiten</h1>
 
     @if (session('success'))
         <p class="text-success mb-0">
@@ -9,9 +9,6 @@
     @endif
     <div class="accordion">
         @foreach($activities as $activity)
-            @php
-                $signings = App\Models\ActivitiesRelationship::where('activity_id', $activity->id)->get();
-            @endphp
             <div class="header" id="accordion-header">
                 <div class="left">27/01</div>
                 <div class="middle">{{ $activity->name }}</div>
@@ -74,7 +71,7 @@
                             Tot nu toe zijn er:
                         </h6>
 
-                        {{ count($signings) }}
+                        {{ count(App\Models\ActivitiesRelationship::where('activity_id', $activity->id)->get()) }}
                         Ingeschreven deelnemer(s)
                     </div>
 
@@ -84,29 +81,11 @@
                         </h6>
                         €{{ $activity->price }}
                     </div>
-                    @if(!$signings->isEmpty())
-                        @foreach($signings->where('user_id', \Illuminate\Support\Facades\Auth::id()) as $signing)
-                            @if(!$signings->isEmpty())
-                                <form action="/uitschrijven/send" method="POST">
-                                    @csrf
-                                    <input type="hidden" value="{{ $activity->id }}" name="id"/>
-                                    <input type="submit" class="btn btn-primary" value="Uitschrijven">
-                                </form>
-                            @else
-                                <form action="/inschrijven/send" method="POST">
-                                    @csrf
-                                    <input type="hidden" value="{{ $activity->id }}" name="id"/>
-                                    <input type="submit" class="btn btn-primary" value="Inschrijven">
-                                </form>
-                            @endif
-                        @endforeach
-                    @else
-                        <form action="/inschrijven/send" method="POST">
-                            @csrf
-                            <input type="hidden" value="{{ $activity->id }}" name="id"/>
-                            <input type="submit" class="btn btn-primary" value="Inschrijven">
-                        </form>
-                    @endif
+                    <form action="/uitschrijven/send" method="POST">
+                        @csrf
+                        <input type="hidden" value="{{ $activity->id }}" name="id"/>
+                        <input type="submit" class="btn btn-primary" value="Uitschrijven">
+                    </form>
                 </div>
 
                 <div class="spacer"></div>
@@ -147,12 +126,6 @@
             </div>
         @endforeach
     </div>
-
-    <a href="/addActivities">
-        <button id="btn" class="btn btn-primary">
-            Activiteit toevoegen
-        </button>
-    </a>
 
     <script>
         document.querySelectorAll('#accordion-header').forEach(item => {
