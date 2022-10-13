@@ -39,3 +39,5 @@ Route::post("/admin/users/create", [UserController::class, 'create'])->middlewar
 Route::post("/admin/users/update", [UserController::class, 'update'])->middleware('auth');
 
 Route::post("/admin/users/delete", [UserController::class, 'delete'])->middleware('auth');
+
+Route::post("/admin/users/panel", [UserController::class, 'panel'])->middleware('auth');
