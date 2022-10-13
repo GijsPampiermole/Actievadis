@@ -30,4 +30,13 @@ class PageController extends BaseController
     {
         return view('addActivities');
     }
+
+    public function editActivities(Request $request, $activityId)
+    {
+        $id = strval($activityId);
+        $activity = DB::table('activities')->where('id', $id)->first();
+        return view('editActivities', [
+            'activity' => $activity
+        ]);
+    }
 }

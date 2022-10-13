@@ -134,6 +134,11 @@
                             <input type="submit" value="Reageren" class="border mt-4 btn btn-primary w-25">
                         </form>
                     </div>
+                    <a href="/editActivities/{{ $activity->id }}" class="btn btn-primary">
+                        <button id="btn" class="btn btn-primary">
+                            Activiteit bewerken
+                        </button>
+                    </a>
                 </div>
             </div>
         @endforeach
