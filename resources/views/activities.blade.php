@@ -58,13 +58,9 @@
 
                     <div class="participants mt-2">
                         <h6 class="fw-bold">
-                            Minimaal deelnemers:
+                            Aantal Deelnemers:
                         </h6>
-                        {{ $activity->minParticipants }}
-                        <h6 class="fw-bold">
-                            Maximaal deelnemers:
-                        </h6>
-                        {{ $activity->maxParticipants }}
+                        {{ $activity->minParticipants }} - {{ $activity->maxParticipants }}
                     </div>
                     <div class="current-participants padding-25 mt-2">
                         <h6 class="fw-bold">
