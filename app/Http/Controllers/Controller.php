@@ -19,12 +19,13 @@ class Controller extends BaseController
         $food = $request->input('food') == 'yes' ? 1 : 0;
         $image = $request->input('image');
         $price = $request->input('price');
-        $startTime = $request->input('startTime');
+        $startTime = $request->input('startTime'); 
         $endTime = $request->input('endTime');
         $description = $request->input('description');
         $needs = $request->input('needs');
         $maxParticipants = $request->input('maxParticipants');
         $minParticipants = $request->input('minParticipants');
+        $date = $request->input('startTime');
         
         $signedUpUsers = "[{user: 1}{user: 2}]";
 
