@@ -47,3 +47,5 @@ Route::post("/inschrijven/send", [ActivityController::class, 'signUp'])->middlew
 Route::post("/uitschrijven/send", [ActivityController::class, 'unSubscribe'])->middleware('auth');
 
 Route::post("/comments/send", [CommentController::class, 'create'])->middleware('auth');
+
+Route::post("/activiteit/verwijder", [ActivityController::class, 'delete'])->middleware('auth');
