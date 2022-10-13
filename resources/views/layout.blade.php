@@ -37,7 +37,7 @@
         </div>
     </nav>
 @endif
-<div class="container-lg">
+<div class="container-lg"  style="padding-top: 20px">
     @yield('content')
 </div>
 @vite(['resources/css/app.scss', 'resources/js/app.js'])
