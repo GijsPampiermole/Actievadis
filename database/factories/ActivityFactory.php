@@ -18,17 +18,17 @@ class ActivityFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
-            'location' => fake()->city(),
-            'food' => rand(0,1) < 0.5,
-            'image' => 'https://www.google.nl/images/branding/googlelogo/2x/googlelogo_color_160x56dp.png',
-            'price' => fake()->randomNumber(2),
-            'startTime' => fake()->dateTime(),
-            'endTime' => fake()->dateTime(),
-            'description' => 'bla bla bla',
-            'needs' => 'bla bla bla',
-            'minParticipants' => fake()->randomNumber(),
-            'maxParticipants' => fake()->randomNumber()
+            'name' => 'Zwemmen',
+            'location' => 'Zwembad Rozengaarde, Doetinchem',
+            'food' => false,
+            'image' => 'https://www.grotegroepsaccommodatie.nl/wp-content/uploads/2019/02/rozengaarde-doetinchem-zwembad.jpg',
+            'price' => '14.99',
+            'startTime' => '2022-10-25 16:00:00',
+            'endTime' => '2022-10-25 21:00:00',
+            'description' => 'We gaan zwemmen bij zwembad de rozengaarde in doetinchem. Na die tijd doen we nog een drankje op een terras',
+            'needs' => 'Zwemkleding',
+            'minParticipants' => '5',
+            'maxParticipants' => '100'
         ];
     }
 }

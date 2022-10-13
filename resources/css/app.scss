@@ -3,12 +3,35 @@
 
 :root {
     --border-color: #DEE2E6;
-    --active-color: #E7F1FF;
-    --active-font-color: #1163E4;
+    --active-color: #fef7e6;
+    --active-font-color: #a47601;
+
+    --bs-btn-hover-bg: #cf9400!important;
+    --bs-btn-hover-border-color: #F5AF00!important;
+
+    
 }
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.bg-light {
+    background-color: #0F132F!important;
+}
+
+.navbar-brand, .navbar-nav .nav-link.active, .nav-link {
+    color: white!important;
+    transition: .3s;
+}
+
+.navbar-brand:hover, .navbar-nav .nav-link.active:hover, .nav-link:hover {
+    color: white!important;
+    opacity: .7;
+}
+
+.activity-image-full-size {
+    width: 100%;
 }
 
 .accordion {
