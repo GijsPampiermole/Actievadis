@@ -47,3 +47,13 @@ Route::post("/inschrijven/send", [ActivityController::class, 'signUp'])->middlew
 Route::post("/uitschrijven/send", [ActivityController::class, 'unSubscribe'])->middleware('auth');
 
 Route::post("/comments/send", [CommentController::class, 'create'])->middleware('auth');
+
+Route::get('/account', [PageController::class, 'account'])->middleware('auth');
+
+Route::post('/account/update', [AuthController::class, 'update'])->middleware('auth');
+
+Route::get('/admin/accounts', [PageController::class, 'adminAccounts'])->middleware('auth');
+
+Route::post('/admin/accounts/update', [AuthController::class, 'adminUpdate'])->middleware('auth');
+
+Route::post('/admin/accounts/delete', [AuthController::class, 'adminDelete'])->middleware('auth');

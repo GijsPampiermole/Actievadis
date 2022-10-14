@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ActivitiesRelationship;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Activity;
 use Illuminate\Routing\Controller as BaseController;
@@ -29,5 +30,15 @@ class PageController extends BaseController
     public function addActivities()
     {
         return view('addActivities');
+    }
+
+    public function account()
+    {
+        return view('account', ['user' => Auth::user()]);
+    }
+
+    public function adminAccounts()
+    {
+        return view('adminAccounts', ['users' => User::all()]);
     }
 }
