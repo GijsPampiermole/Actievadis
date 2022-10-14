@@ -9,6 +9,9 @@
     @endif
     <div class="accordion">
         @foreach($activities as $activity)
+            @php
+                $signings = App\Models\ActivitiesRelationship::where('activity_id', $activity->id)->get();
+            @endphp
             <div class="header" id="accordion-header">
                 <div class="left">{{ Carbon\Carbon::parse($activity->date)->format('d/m'); }}</div>
                 <div class="middle">{{ $activity->name }}</div>
@@ -67,7 +70,7 @@
                             Tot nu toe zijn er:
                         </h6>
 
-                        {{ count(App\Models\ActivitiesRelationship::where('activityId', $activity->id)->get()) }}
+                        {{ count($signings) }}
                         Ingeschreven deelnemer(s)
                     </div>
 
@@ -77,13 +80,19 @@
                         </h6>
                         €{{ $activity->price }}
                     </div>
-                    @if(!$userSignings->isEmpty())
-                        @foreach($userSignings as $signing)
-                            @if($activity->id === $signing->activityId)
+                    @if(!$signings->isEmpty())
+                        @foreach($signings->where('user_id', \Illuminate\Support\Facades\Auth::id()) as $signing)
+                            @if(!$signings->isEmpty())
                                 <form action="/uitschrijven/send" method="POST">
                                     @csrf
                                     <input type="hidden" value="{{ $activity->id }}" name="id"/>
                                     <input type="submit" class="btn btn-primary" value="Uitschrijven">
+                                </form>
+                            @else
+                                <form action="/inschrijven/send" method="POST">
+                                    @csrf
+                                    <input type="hidden" value="{{ $activity->id }}" name="id"/>
+                                    <input type="submit" class="btn btn-primary" value="Inschrijven">
                                 </form>
                             @endif
                         @endforeach
@@ -102,9 +111,9 @@
                     <div class="image">
                         <img src="{{ $activity->image}}" alt="" class="padding-25 activity-image-full-size"/>
                         <div class="border comments">
-                            @foreach(\App\Models\Comment::where('activityId', $activity->id)->get() as $comment)
+                            @foreach(\App\Models\Comment::where('activity_id', $activity->id)->get() as $comment)
                                 <div class="mb-3">
-                                    @foreach(\App\Models\User::where('id', $comment->userId)->get() as $user)
+                                    @foreach(\App\Models\User::where('id', $comment->user_id)->get() as $user)
                                         <div class="d-flex justify-content-between align-items-end">
                                             <p class="fw-bold mb-0">
                                                 {{ $user->name }}
