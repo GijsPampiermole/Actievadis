@@ -11,8 +11,12 @@
         @foreach($activities as $activity)
             <div>
                 <div class="header accordion-header">
-                    <div class="left">27/01</div>
-                    <div class="middle">{{ $activity->name }}</div>
+                    <div class="left">
+                        {{ Carbon\Carbon::parse($activity->date)->format('d/m') }}
+                    </div>
+                    <div class="middle">
+                        {{ $activity->name }}
+                    </div>
                     <div class="end">
                         <svg class="svg-icon svg-dropdown"
                              style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;"
@@ -132,11 +136,11 @@
     <script>
         const accordion = document.getElementsByClassName('accordion-header')
 
-        for(let i=0; i<accordion.length; i++) {
+        for (let i = 0; i < accordion.length; i++) {
             accordion[i].addEventListener("click", () => {
                 let dropdown = accordion[i].parentElement.getElementsByClassName('content')
 
-                for(let x=0; x<dropdown.length; x++) {
+                for (let x = 0; x < dropdown.length; x++) {
                     if (dropdown[x].style.maxHeight == "0px") {
                         dropdown[x].style.maxHeight = dropdown[x].scrollHeight + 'px';
                         dropdown[x].style.margin = "20px";
