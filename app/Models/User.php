@@ -33,4 +33,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password'
     ];
+
+    public function activities()
+    {
+        return $this->belongsToMany(Activity::class, 'activities_relationships');
+    }
 }
