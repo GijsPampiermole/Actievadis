@@ -48,6 +48,8 @@ Route::post("/uitschrijven/send", [ActivityController::class, 'unSubscribe'])->m
 
 Route::post("/comments/send", [CommentController::class, 'create'])->middleware('auth');
 
+Route::get("/inschrijvingen", [PageController::class, 'signUpsPage'])->middleware('auth');
+
 Route::get('/account', [PageController::class, 'account'])->middleware('auth');
 
 Route::post('/account/update', [AuthController::class, 'update'])->middleware('auth');
