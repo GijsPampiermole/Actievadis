@@ -26,11 +26,16 @@
                             <a class="nav-link" href="/inschrijvingen">Mijn inschrijvingen</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/accounts">Accounts</a>
+                            <a class="nav-link" href="/account">Account</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/uitloggen">Uitloggen</a>
                         </li>
+                        @if(\Illuminate\Support\Facades\Auth::user()->isAdmin)
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/accounts">Accounts beheren</a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </div>
