@@ -9,7 +9,7 @@
     --bs-btn-hover-bg: #cf9400!important;
     --bs-btn-hover-border-color: #F5AF00!important;
 
-    
+
 }
 
 body {
@@ -50,6 +50,7 @@ body {
     align-items: center;
     border-bottom: 1px solid var(--border-color);
     transition: 0.5s;
+    border-top: 1px solid var(--border-color);
 }
 
 .headerActive {
