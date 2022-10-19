@@ -33,6 +33,12 @@
 
                     <div class="box">
                         <div class="description mt-2 padding-25">
+                            <h2 class="fw-bold">
+                                {{ $activity->name }}
+                            </h2>
+                        </div>
+
+                        <div class="description mt-2 padding-25">
                             <h6 class="fw-bold">
                                 Beschrijving:
                             </h6>
