@@ -29,7 +29,7 @@ class Controller extends BaseController
         $data = array('name'=>$name, 'location'=>$location, 'food'=>$food, 'image'=>$image, 'price'=>$price, 'startTime'=>$startTime, 'endTime'=>$endTime, 'description'=>$description, 'needs'=>$needs, 'maxParticipants'=>$maxParticipants, 'minParticipants'=>$minParticipants);
         
         DB::table('activities')->insert($data);
-        return redirect('/activities');
+        return redirect('/');
     }
 
     public function editActivity(Request $request, $activityId){
