@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ActivitiesRelationship;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Activity;
@@ -32,5 +33,15 @@ class PageController extends BaseController
     {
         $activities = User::find(Auth::id())->activities()->get();
         return view('mySignUps', ['activities' => $activities]);
+    }
+
+    public function account()
+    {
+        return view('account', ['user' => Auth::user()]);
+    }
+
+    public function adminAccounts()
+    {
+        return view('adminAccounts', ['users' => User::all()]);
     }
 }
