@@ -154,9 +154,7 @@
                                 <input type="submit" value="Reageren" class="border mt-4 btn btn-primary w-25">
                             </form>
                             <a href="/editActivities/{{ $activity->id }}" class="btn btn-primary mt-3">
-                                <button id="btn" class="btn btn-primary">
-                                    Activiteit bewerken
-                                </button>
+                                Activiteit bewerken
                             </a>
                         </div>
                     </div>
