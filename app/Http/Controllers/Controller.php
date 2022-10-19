@@ -47,8 +47,9 @@ class Controller extends BaseController
         $activity->needs = $request->input('needs');
         $activity->maxParticipants = $request->input('maxParticipants');
         $activity->minParticipants = $request->input('minParticipants');
-        $activity->save();
+        
+        DB::table('activities')->where('id', $activityId)->update((array)$activity);
 
-        return redirect('/activities');
+        return redirect('/');
     }
 }

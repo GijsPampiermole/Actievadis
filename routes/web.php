@@ -26,7 +26,7 @@ Route::get("/fullcalendar", "App\Http\Controllers\Controller@Chartjs")->middlewa
 
 Route::post("/addActivity", [Controller::class, 'addActivity'])->middleware('auth');
 
-Route::post("/editActivity/{activityId}/update", [Controller::class, 'editActivity'])->middleware('auth');
+Route::post("/editActivity/{activityId}/update", [Controller::class, 'editActivity']);
 
 Route::get("/layout", function() { return view('layout'); })->middleware('auth');
 

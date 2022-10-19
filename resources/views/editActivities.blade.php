@@ -2,9 +2,8 @@
 @section('content')
 
     <h3 style="margin-top: 50px;">Edit Activity</h3>
-    <form action="/editActivity/{activity->id}/update" method="POST">
-        @csrf
-        <input type="hidden" name="id" value="{{$activity->id}}">
+    <form action="/editActivity/{{ $activity->id }}/update" method="POST">
+        {{ csrf_field() }}
         <div class="col-lg-4">
         <label for="name">Name <span style="color: red;">*</span></label><br>
         <input type="text" name="name" id="name" maxlength="20" class="form-control" value="{{$activity->name}}" required>
@@ -55,18 +54,18 @@
         </div>
         <div class="col-lg-2">
         <label for="startTime">Start Time <span style="color: red;">*</span></label><br>
-        <input type="time" name="startTime" id="startTime" class="form-control" value="{{$activity->startTime}}" required>
+        <input type="datetime-local" name="startTime" id="startTime" class="form-control" value="{{$activity->startTime}}" required>
         <br>
         </div>
         <div class="col-lg-2">
         <label for="endTime">End Time <span style="color: red;">*</span></label><br>
-        <input type="time" name="endTime" id="endTime" class="form-control" value="{{$activity->endTime}}" required>
+        <input type="datetime-local" name="endTime" id="endTime" class="form-control" value="{{$activity->endTime}}" required>
         <br>
         </div>
+        <div class="col-lg-2">
+            <button type="submit" class="btn btn-primary">Bewerken</button>
+        </div>
     </form>
-    <div class="col-lg-2">
-        <button type="submit" class="btn btn-primary">Bewerken</button>
-    </div>
 @endsection
 
        
