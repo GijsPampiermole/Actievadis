@@ -88,18 +88,20 @@
                         </div>
                         @if(!$signings->isEmpty())
                             @foreach($signings->where('user_id', \Illuminate\Support\Facades\Auth::id()) as $signing)
-                                @if(!$signings->isEmpty())
-                                    <form action="/uitschrijven/send" method="POST">
-                                        @csrf
-                                        <input type="hidden" value="{{ $activity->id }}" name="id"/>
-                                        <input type="submit" class="btn btn-primary" value="Uitschrijven">
-                                    </form>
-                                @else
-                                    <form action="/inschrijven/send" method="POST">
-                                        @csrf
-                                        <input type="hidden" value="{{ $activity->id }}" name="id"/>
-                                        <input type="submit" class="btn btn-primary" value="Inschrijven">
-                                    </form>
+                                @if(count($signings) < $activity->maxParticipants)
+                                    @if(!$signings->isEmpty())
+                                        <form action="/uitschrijven/send" method="POST">
+                                            @csrf
+                                            <input type="hidden" value="{{ $activity->id }}" name="id"/>
+                                            <input type="submit" class="btn btn-primary" value="Uitschrijven">
+                                        </form>
+                                    @else
+                                        <form action="/inschrijven/send" method="POST">
+                                            @csrf
+                                            <input type="hidden" value="{{ $activity->id }}" name="id"/>
+                                            <input type="submit" class="btn btn-primary" value="Inschrijven">
+                                        </form>
+                                    @endif
                                 @endif
                             @endforeach
                         @else
