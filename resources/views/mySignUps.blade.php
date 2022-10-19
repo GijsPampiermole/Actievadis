@@ -12,7 +12,7 @@
             <div>
                 <div class="header accordion-header">
                     <div class="left">
-                        {{ Carbon\Carbon::parse($activity->date)->format('d/m') }}
+                        {{ Carbon\Carbon::parse($activity->startTime)->format('d/m') }}
                     </div>
                     <div class="middle">
                         {{ $activity->name }}

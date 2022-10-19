@@ -25,13 +25,31 @@ class Controller extends BaseController
         $needs = $request->input('needs');
         $maxParticipants = $request->input('maxParticipants');
         $minParticipants = $request->input('minParticipants');
-        $date = $request->input('startTime');
-        
-        $signedUpUsers = "[{user: 1}{user: 2}]";
 
-        $data = array('name'=>$name, 'location'=>$location, 'food'=>$food, 'image'=>$image, 'price'=>$price, 'startTime'=>$startTime, 'endTime'=>$endTime, 'description'=>$description, 'needs'=>$needs, 'maxParticipants'=>$maxParticipants, 'minParticipants'=>$minParticipants, 'signedUpUsers'=>$signedUpUsers);
+        $data = array('name'=>$name, 'location'=>$location, 'food'=>$food, 'image'=>$image, 'price'=>$price, 'startTime'=>$startTime, 'endTime'=>$endTime, 'description'=>$description, 'needs'=>$needs, 'maxParticipants'=>$maxParticipants, 'minParticipants'=>$minParticipants);
         
         DB::table('activities')->insert($data);
-        return redirect('/activities');
+        return redirect('/');
+    }
+
+    public function editActivity(Request $request, $activityId){
+        
+        $activity = DB::table('activities')->where('id', $activityId)->first();
+
+        $activity->name = $request->input('name');
+        $activity->location = $request->input('location');
+        $activity->food = $request->input('food') == 'yes' ? 1 : 0;
+        $activity->image = $request->input('image');
+        $activity->price = $request->input('price');
+        $activity->startTime = $request->input('startTime');
+        $activity->endTime = $request->input('endTime');
+        $activity->description = $request->input('description');
+        $activity->needs = $request->input('needs');
+        $activity->maxParticipants = $request->input('maxParticipants');
+        $activity->minParticipants = $request->input('minParticipants');
+        
+        DB::table('activities')->where('id', $activityId)->update((array)$activity);
+
+        return redirect('/');
     }
 }

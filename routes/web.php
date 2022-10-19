@@ -26,9 +26,13 @@ Route::get("/fullcalendar", "App\Http\Controllers\Controller@Chartjs")->middlewa
 
 Route::post("/addActivity", [Controller::class, 'addActivity'])->middleware('auth');
 
+Route::post("/editActivity/{activityId}/update", [Controller::class, 'editActivity']);
+
 Route::get("/layout", function() { return view('layout'); })->middleware('auth');
 
 Route::get("/addActivities", [PageController::class, 'addActivities'])->middleware('auth');
+
+Route::get("/editActivities/{activityId}", [PageController::class, 'editActivities'])->middleware('auth');
 
 Route::get("/inloggen", [PageController::class, 'loginPage'])->name('login')->middleware(LoggedIn::class);
 

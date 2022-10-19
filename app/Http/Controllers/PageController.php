@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Activity;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PageController extends BaseController
 {
@@ -43,5 +44,14 @@ class PageController extends BaseController
     public function adminAccounts()
     {
         return view('adminAccounts', ['users' => User::all()]);
+    }
+
+    public function editActivities(Request $request, $activityId)
+    {
+        $id = strval($activityId);
+        $activity = DB::table('activities')->where('id', $id)->first();
+        return view('editActivities', [
+            'activity' => $activity
+        ]);
     }
 }
