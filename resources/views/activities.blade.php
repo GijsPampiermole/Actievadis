@@ -155,9 +155,7 @@
                             </form>
                             @if(Auth::user()->isAdmin)
                                 <a href="/editActivities/{{ $activity->id }}" class="btn btn-primary mt-3">
-                                    <button id="btn" class="btn btn-primary">
-                                        Activiteit bewerken
-                                    </button>
+                                    Activiteit bewerken
                                 </a>
                             @endif
                         </div>
