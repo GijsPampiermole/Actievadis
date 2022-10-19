@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\ActivitiesRelationship;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Activity;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class PageController extends BaseController
 {
@@ -19,16 +19,30 @@ class PageController extends BaseController
     public function activities(Request $request)
     {
         $activities = Activity::orderBy('startTime', 'ASC')->get();
-        $signings = ActivitiesRelationship::where('userId', Auth::id())->get();
         return view('activities', [
-            'activities' => $activities,
-            'userSignings' => $signings
+            'activities' => $activities
         ]);
     }
 
     public function addActivities()
     {
         return view('addActivities');
+    }
+
+    public function signUpsPage()
+    {
+        $activities = User::find(Auth::id())->activities()->get();
+        return view('mySignUps', ['activities' => $activities]);
+    }
+
+    public function account()
+    {
+        return view('account', ['user' => Auth::user()]);
+    }
+
+    public function adminAccounts()
+    {
+        return view('adminAccounts', ['users' => User::all()]);
     }
 
     public function editActivities(Request $request, $activityId)

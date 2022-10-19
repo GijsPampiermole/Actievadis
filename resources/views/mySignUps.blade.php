@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-    <p>Activiteiten</p>
+    <h1>Mijn activiteiten</h1>
 
     @if (session('success'))
         <p class="text-success mb-0">
@@ -9,9 +9,6 @@
     @endif
     <div class="accordion">
         @foreach($activities as $activity)
-            @php
-                $signings = App\Models\ActivitiesRelationship::where('activity_id', $activity->id)->get();
-            @endphp
             <div>
                 <div class="header accordion-header">
                     <div class="left">
@@ -32,7 +29,7 @@
                 <div class="content" id="accordion-content" style="max-height: 0px;">
 
                     <div class="box">
-                        <div class="description mt-2 padding-25">
+                        <div class="description mt-2">
                             <h6 class="fw-bold">
                                 Beschrijving:
                             </h6>
@@ -61,63 +58,46 @@
                             <h6 class="fw-bold">
                                 Datum en tijd:
                             </h6>
-                            Van {{ Carbon\Carbon::parse($activity->startTime)->format('H:i'); }}
-                            tot {{ Carbon\Carbon::parse($activity->endTime)->format('H:i'); }}
+                            Van {{ $activity->startTime }} tot {{ $activity->endTime }}
                         </div>
 
                         <div class="participants mt-2">
                             <h6 class="fw-bold">
-                                Aantal Deelnemers:
+                                Minimaal deelnemers:
                             </h6>
-                            {{ $activity->minParticipants }} - {{ $activity->maxParticipants }}
+                            {{ $activity->minParticipants }}
+                            <h6 class="fw-bold">
+                                Maximaal deelnemers:
+                            </h6>
+                            {{ $activity->maxParticipants }}
                         </div>
                         <div class="current-participants padding-25 mt-2">
                             <h6 class="fw-bold">
                                 Tot nu toe zijn er:
                             </h6>
 
-                            {{ count($signings) }}
+                            {{ count(App\Models\ActivitiesRelationship::where('activity_id', $activity->id)->get()) }}
                             Ingeschreven deelnemer(s)
                         </div>
 
-                        <div class="price padding-25">
+                        <div class="price">
                             <h6 class="fw-bold">
                                 Prijs:
                             </h6>
                             €{{ $activity->price }}
                         </div>
-                        @if(!$signings->isEmpty())
-                            @foreach($signings->where('user_id', \Illuminate\Support\Facades\Auth::id()) as $signing)
-                                @if(count($signings) < $activity->maxParticipants)
-                                    @if(!$signings->isEmpty())
-                                        <form action="/uitschrijven/send" method="POST">
-                                            @csrf
-                                            <input type="hidden" value="{{ $activity->id }}" name="id"/>
-                                            <input type="submit" class="btn btn-primary" value="Uitschrijven">
-                                        </form>
-                                    @else
-                                        <form action="/inschrijven/send" method="POST">
-                                            @csrf
-                                            <input type="hidden" value="{{ $activity->id }}" name="id"/>
-                                            <input type="submit" class="btn btn-primary" value="Inschrijven">
-                                        </form>
-                                    @endif
-                                @endif
-                            @endforeach
-                        @else
-                            <form action="/inschrijven/send" method="POST">
-                                @csrf
-                                <input type="hidden" value="{{ $activity->id }}" name="id"/>
-                                <input type="submit" class="btn btn-primary" value="Inschrijven">
-                            </form>
-                        @endif
+                        <form action="/uitschrijven/send" method="POST">
+                            @csrf
+                            <input type="hidden" value="{{ $activity->id }}" name="id"/>
+                            <input type="submit" class="btn btn-primary" value="Uitschrijven">
+                        </form>
                     </div>
 
                     <div class="spacer"></div>
 
                     <div class="box">
                         <div class="image">
-                            <img src="{{ $activity->image}}" alt="" class="padding-25 activity-image-full-size"/>
+                            <img src="{{ $activity->image}}" alt="" class="padding-25"/>
                             <div class="border comments">
                                 @foreach(\App\Models\Comment::where('activity_id', $activity->id)->get() as $comment)
                                     <div class="mb-3">
@@ -127,7 +107,7 @@
                                                     {{ $user->name }}
                                                 </p>
                                                 <p class="mb-0">
-                                                    {{ Carbon\Carbon::parse($comment->created_at)->format('H:i - d/m'); }}
+                                                    {{ $comment->created_at }}
                                                 </p>
                                             </div>
                                         @endforeach
@@ -148,23 +128,10 @@
                             </form>
                         </div>
                     </div>
-                    <a href="/editActivities/{{ $activity->id }}" class="btn btn-primary">
-                        <button id="btn" class="btn btn-primary">
-                            Activiteit bewerken
-                        </button>
-                    </a>
                 </div>
             </div>
         @endforeach
     </div>
-
-    @if(Auth::user()->isAdmin)
-        <a href="/addActivities">
-            <button id="btn" class="btn btn-primary">
-                Activiteit toevoegen
-            </button>
-        </a>
-    @endif
 
     <script>
         const accordion = document.getElementsByClassName('accordion-header')

@@ -10,8 +10,8 @@ class CommentController extends Controller
 {
     public function create(Request $request) {
         $comment = new Comment();
-        $comment->userId = Auth::id();
-        $comment->activityId = $request->id;
+        $comment->user_id = Auth::id();
+        $comment->activity_id = $request->id;
         $comment->message = $request->reactie;
         $comment->save();
         return redirect('/');
