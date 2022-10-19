@@ -27,7 +27,7 @@ class ActivityController extends Controller
     public function delete(Request $request)
     {
         Activity::where('id', $request->id)->delete();
-        ActivitiesRelationship::where('activityId', $request->id)->delete();
+        ActivitiesRelationship::where('activity_id', $request->id)->delete();
         return redirect('/')->with('success', 'Activiteit succesvol verwijderd');
     }
 }
