@@ -153,11 +153,11 @@
                                           class="border mt-4 h-auto me-4"></textarea>
                                 <input type="submit" value="Reageren" class="border mt-4 btn btn-primary w-25">
                             </form>
-                            <a href="/editActivities/{{ $activity->id }}" class="btn btn-primary mt-3">
-                                <button id="btn" class="btn btn-primary">
+                            @if(Auth::user()->isAdmin)
+                                <a href="/editActivities/{{ $activity->id }}" class="btn btn-primary mt-3">
                                     Activiteit bewerken
-                                </button>
-                            </a>
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>
