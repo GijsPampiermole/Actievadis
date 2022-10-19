@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Activity;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PageController extends BaseController
 {

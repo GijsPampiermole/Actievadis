@@ -137,3 +137,7 @@ body {
     max-height: 420px;
     overflow-y: scroll;
 }
+
+.header {
+    border-top: 1px solid var(--border-color);
+}

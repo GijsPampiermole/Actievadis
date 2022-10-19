@@ -15,12 +15,19 @@
             <div>
                 <div class="header accordion-header">
                     <div class="left">
-                        {{ Carbon\Carbon::parse($activity->date)->format('d/m') }}
+                        {{ Carbon\Carbon::parse($activity->startTime)->format('d/m') }}
                     </div>
                     <div class="middle">
                         {{ $activity->name }}
                     </div>
-                    <div class="end">
+                    <div class="end d-flex align-items-center">
+                        @if(Auth::user()->isAdmin)
+                            <form class="me-4" method="POST" action="/activiteit/verwijder">
+                                @csrf
+                                <input type="hidden" value="{{ $activity->id }}" name="id"/>
+                                <input type="submit" value="Verwijderen" class="btn btn-primary">
+                            </form>
+                        @endif
                         <svg class="svg-icon svg-dropdown"
                              style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;"
                              viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -146,13 +153,13 @@
                                           class="border mt-4 h-auto me-4"></textarea>
                                 <input type="submit" value="Reageren" class="border mt-4 btn btn-primary w-25">
                             </form>
+                            <a href="/editActivities/{{ $activity->id }}" class="btn btn-primary mt-3">
+                                <button id="btn" class="btn btn-primary">
+                                    Activiteit bewerken
+                                </button>
+                            </a>
                         </div>
                     </div>
-                    <a href="/editActivities/{{ $activity->id }}" class="btn btn-primary">
-                        <button id="btn" class="btn btn-primary">
-                            Activiteit bewerken
-                        </button>
-                    </a>
                 </div>
             </div>
         @endforeach
