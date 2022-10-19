@@ -20,7 +20,7 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->safeEmail(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'password' => '$2y$10$EYutJMO6QRPzY64WE3xX2eq7jxikec6EGHpuAnR6GTOeI1iqIBNDW', // password
             'isAdmin' => rand(0,1) < 0.5
         ];
     }
